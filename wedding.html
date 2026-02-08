@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding | SD Photography</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<link rel="stylesheet" href="preweding.css" />
+   <header>
+     <div  <h1 class="logo-heading">SD Special Divine <span>PHOTOGRAPHY</span></h1></div>
+    
+    <div class="header-buttons">
+    <a href="sd.html" class="whatsapp-link">Back</a>
+      <a href="https://www.instagram.com/sdphotographyi?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="instagram-btn">Instagram</a>
+    </div>
+  </header>
+   
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: "Poppins", sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px 0;
+      color: #ffcc00;
+      letter-spacing: 3px;
+      font-size: 2rem;
+    }
+
+    /* ===== SWIPER CONTAINER ===== */
+    .swiper {
+      width: 100%;
+      height: 100vh; /* Full screen height */
+    }
+
+    .swiper-slide {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* 👈 this keeps image ratio perfect */
+      background-color: #000;
+    }
+
+    /* ===== CAPTION ===== */
+    .caption {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-size: 16px;
+      color: #ffcc00;
+    }
+
+    /* ===== NAVIGATION BUTTONS ===== */
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #ffcc00;
+      transition: 0.3s;
+    }
+
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+      color: #fff;
+      transform: scale(1.2);
+    }
+
+    .swiper-pagination-bullet {
+      background: #ffcc00;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: #ffffff;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .swiper {
+        height: 80vh;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      .caption {
+        font-size: 14px;
+        bottom: 10px;
+        left: 10px;
+      }
+    }
+     
+  </style>
+</head>
+<body>
+     <h1>wedding Gallery</h1>
+  <!-- Swiper -->
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="wedding/AA sd 08.jpg" alt="Wedding" />
+        <div class="caption"></div>
+      </div>
+      <div class="swiper-slide">
+        <img src="wedding/AA sd 15.jpg" alt="Pre Wedding" />
+        <div class="caption"></div>
+      </div>
+      <div class="swiper-slide">
+        <img src="wedding/M Post 02.jpg" alt="Baby Shower" />
+        <div class="caption"></div>
+      </div>
+      <div class="swiper-slide">
+        <img src="wedding/sd HR 08.jpg" alt="Baby Shower" />
+        <div class="caption"></div>
+      </div>
+      <div class="swiper-slide">
+        <img src="wedding/Untitled-111111.jpg" alt="Birthday" />
+        <div class="caption"></div>
+      </div>
+    </div>
+
+    <!-- Add navigation buttons -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+
+    <!-- Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      effect: "fade", // 👈 smooth fade transition
+      speed: 800
+    });
+  </script>
+</body>
+</html>
+ <script>
+    // Modal wiring
+    const modal = document.getElementById('bookingModal');
+    const openBtn = document.querySelector('.page-cta .book-now');
+    const closeBtn = document.getElementById('modalClose');
+    const form = document.getElementById('bookingForm');
+    const msg = document.getElementById('bookingMsg');
+
+    function openModal() {
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+    }
+    function closeModal() {
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    openBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      openModal();
+    });
+    closeBtn.addEventListener('click', closeModal);
+    window.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+
+    // Submit booking to backend, then open WhatsApp. Improved error handling & loading state.
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      msg.style.display = 'none';
+      msg.style.color = 'lightgreen';
+
+      const name = document.getElementById('b-name').value.trim();
+      const phone = document.getElementById('b-phone').value.trim();
+      const packageName = document.getElementById('b-package').value;
+      const notesVal = document.getElementById('b-notes').value.trim();
+
+      // Basic client validation
+      if (!name) { msg.style.display = 'block'; msg.style.color = 'salmon'; msg.textContent = 'Name is required.'; return; }
+      if (!phone || phone.length < 6) { msg.style.display = 'block'; msg.style.color = 'salmon'; msg.textContent = 'Please enter a valid phone number.'; return; }
+
+      const data = { name, phone, packageName, notes: notesVal };
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        const res = await fetch('http://localhost:5000/api/bookings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        let json;
+        try { json = await res.json(); } catch (parseErr) { json = null; }
+
+        if (!res.ok) {
+          // show server-provided message when available
+          const serverMsg = json && json.error ? json.error : `Status ${res.status}`;
+          throw new Error(serverMsg);
+        }
+
+        msg.style.display = 'block';
+        msg.style.color = 'lightgreen';
+        msg.textContent = 'Booking saved — opening WhatsApp...';
+
+        const waText = encodeURIComponent(`Hi, I'm ${data.name}. I'm interested in ${data.packageName}. Phone: ${data.phone}`);
+        const waUrl = `https://wa.me/9316490020?text=${waText}`;
+        setTimeout(() => { window.open(waUrl, '_blank'); closeModal(); }, 900);
+
+      } catch (err) {
+        console.error('Booking error:', err);
+        msg.style.display = 'block';
+        msg.style.color = 'salmon';
+        msg.textContent = 'Failed to save booking: ' + err.message;
+        // show hint to check server
+        const hint = document.createElement('div');
+        hint.style.marginTop = '8px';
+        hint.style.fontSize = '12px';
+        hint.style.color = '#ccc';
+        hint.textContent = 'Check server is running at http://localhost:5000 and look at server logs.';
+        if (!msg.querySelector('div')) msg.appendChild(hint);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
+  </script>
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pre-Wedding | SD Photography</title>
+  <link rel="stylesheet" href="sd.css" />
+  <link rel="stylesheet" href="preweding.css" />
+</head>
+<body>
+   
+
+  <main id="prewedding-page">
+    <div class="prewedding-inner">
+     
+     
+      <div class="gallery-grid">
+        <!-- Album-style tiles -->
+        <div class="album">
+          <div class="tile" data-index="0"><img src="wedding/AA sd 06.jpg" alt="Pre-wedding 1"><div class="tile-caption">Pre-Wedding Couple Shoot</div></div>
+          <div class="tile" data-index="1"><img src="sd Post 04.jpg" alt="Pre-wedding 2"><div class="tile-caption">Pre-Wedding Outdoor Session</div></div>
+          <div class="tile" data-index="2"><img src="wedding/AA sd 10.jpg" alt="Pre-wedding 3"><div class="tile-caption">Sunset Moments</div></div>
+          <div class="tile" data-index="3"><img src="wedding/AA sd 06.jpg" alt="Pre-wedding 4"><div class="tile-caption">Couple Candid</div></div>
+          <div class="tile" data-index="3"><img src="wedding/sd HR 01.jpg" alt="Pre-wedding 4"><div class="tile-caption">Couple Candid</div></div>
+          <div class="tile" data-index="3"><img src="wedding/M Post 04.jpg" alt="Pre-wedding 4"><div class="tile-caption">Couple Candid</div></div>
+          <div class="tile" data-index="3"><img src="wedding/AA sd 15.jpg" alt="Pre-wedding 4"><div class="tile-caption">Couple Candid</div></div>
+          <div class="tile" data-index="3"><img src="wedding/sd HR 11.jpg" alt="Pre-wedding 4"><div class="tile-caption">Couple Candid</div></div>
+          <div class="tile" data-index="3"><img src="wedding/sd HR 14.jpg" alt="Pre-wedding 4"><div class="tile-caption">Couple Candid</div></div>
+          <div class="tile" data-index="3"><img src="wedding/sd HR 10.jpg" alt="Pre-wedding 4"><div class="tile-caption">Couple Candid</div></div>
+         
+          <div class="tile" data-index="3"><img src="wedding/sd HR 13.jpg" alt="Pre-wedding 4"><div class="tile-caption">Couple Candid</div></div>
+          <div class="tile" data-index="3"><img src="wedding/sd HR 07.jpg" alt="Pre-wedding 4"><div class="tile-caption">Couple Candid</div></div>
+          <div class="tile" data-index="3"><img src="wedding/sd HR 01.1.jpg" alt="Pre-wedding 4"><div class="tile-caption">Couple Candid</div></div>
+          <div class="tile" data-index="3"><img src="wedding/M Post 01.jpg" alt="Pre-wedding 4"><div class="tile-caption">Couple Candid</div></div>
+          <div class="tile" data-index="3"><img src="wedding/Untitled-211111.jpg" alt="Pre-wedding 4"><div class="tile-caption">Couple Candid</div></div>
+         
+           <div class="tile" data-index="3"><img src="wedding/sd Seema 01.jpg" alt="Pre-wedding 4"><div class="tile-caption">Couple Candid</div></div>
+          <div class="tile" data-index="3"><img src="wedding/sd Seema 02.jpg" alt="Pre-wedding 4"><div class="tile-caption">Couple Candid</div></div>
+          <div class="tile" data-index="3"><img src="wedding/sd HR 03.jpg" alt="Pre-wedding 4"><div class="tile-caption">Couple Candid</div></div>
+          <div class="tile" data-index="3"><img src="wedding/sd Seema 05.jpg" alt="Pre-wedding 4"><div class="tile-caption">Couple Candid</div></div>
+          <div class="tile" data-index="3"><img src="wedding/sd HR 04.jpg" alt="Pre-wedding 4"><div class="tile-caption">Couple Candid</div></div>
+         
+        </div>
+
+      </div>
+      
+     
+  </main>
+  
+  
+  <div class="page-cta">
+       <a href="https://wa.me/9316490020?text=I'm%20interested%20in%20Wedding%20Shoot%0A%0AName:%20%0AEmail:%20%0AAddress:%20" class="whatsapp-link">Book Now</a>
+  </div>
+
+  
+  <footer>
+           
+
+          
+            <p>SUNIL DHANDHUKIYA</p>
+             <p>📞 WhatsApp: 9316490020 / 9825093551</p>
+             <p>Email:sdphotographyi20@gmail.com</p>
+            <p>📍 Location: bavnagar Gujarat</p>
+            <p>&copy; 2025 SD Photography | All Rights Reserved</p>
+            <p>Capture your special moments with us</p>
+            <p>photography is available all over Gujarat</p>
+             <p style="color:#ccc;">© 2025 Sd Photography</p>
+          </footer>
+
+
+  
+  
+</script>
+        
+
+
+
+  <script>
+    // Modal wiring
+   
+    function openModal() {
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+    }
+    function closeModal() {
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    openBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      openModal();
+    });
+    closeBtn.addEventListener('click', closeModal);
+    window.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+
+    // Submit booking to backend, then open WhatsApp. Improved error handling & loading state.
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      msg.style.display = 'none';
+      msg.style.color = 'lightgreen';
+
+      const name = document.getElementById('b-name').value.trim();
+      const phone = document.getElementById('b-phone').value.trim();
+      const packageName = document.getElementById('b-package').value;
+      const notesVal = document.getElementById('b-notes').value.trim();
+
+      // Basic client validation
+      if (!name) { msg.style.display = 'block'; msg.style.color = 'salmon'; msg.textContent = 'Name is required.'; return; }
+      if (!phone || phone.length < 6) { msg.style.display = 'block'; msg.style.color = 'salmon'; msg.textContent = 'Please enter a valid phone number.'; return; }
+
+      const data = { name, phone, packageName, notes: notesVal };
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        const res = await fetch('http://localhost:5000/api/bookings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        let json;
+        try { json = await res.json(); } catch (parseErr) { json = null; }
+
+        if (!res.ok) {
+          // show server-provided message when available
+          const serverMsg = json && json.error ? json.error : `Status ${res.status}`;
+          throw new Error(serverMsg);
+        }
+
+        msg.style.display = 'block';
+        msg.style.color = 'lightgreen';
+        msg.textContent = 'Booking saved — opening WhatsApp...';
+
+        const waText = encodeURIComponent(`Hi, I'm ${data.name}. I'm interested in ${data.packageName}. Phone: ${data.phone}`);
+        const waUrl = `https://wa.me/9316490020?text=${waText}`;
+        setTimeout(() => { window.open(waUrl, '_blank'); closeModal(); }, 900);
+
+      } catch (err) {
+        console.error('Booking error:', err);
+        msg.style.display = 'block';
+        msg.style.color = 'salmon';
+        msg.textContent = 'Failed to save booking: ' + err.message;
+        // show hint to check server
+        const hint = document.createElement('div');
+        hint.style.marginTop = '8px';
+        hint.style.fontSize = '12px';
+        hint.style.color = '#ccc';
+        hint.textContent = 'Check server is running at http://localhost:5000 and look at server logs.';
+        if (!msg.querySelector('div')) msg.appendChild(hint);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
+  </script>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="close" id="lbClose">✕</button>
+    <div>
+      <img id="lbImage" src="" alt="" />
+      <div class="caption" id="lbCaption"></div>
+    </div>
+  </div>
+
+  <script>
+    // Lightbox wiring for album tiles
+    const tiles = Array.from(document.querySelectorAll('.tile'));
+    const lightbox = document.getElementById('lightbox');
+    const lbImage = document.getElementById('lbImage');
+    const lbCaption = document.getElementById('lbCaption');
+    const lbClose = document.getElementById('lbClose');
+
+    tiles.forEach(tile => {
+      tile.addEventListener('click', () => {
+        const img = tile.querySelector('img');
+        lbImage.src = img.src;
+        lbCaption.textContent = tile.querySelector('.tile-caption').textContent || img.alt || '';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden','false');
+      });
+    });
+    function closeLB(){ lightbox.classList.remove('open'); lightbox.setAttribute('aria-hidden','true'); lbImage.src=''; }
+    lbClose.addEventListener('click', closeLB);
+    lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) closeLB(); });
+  </script>
+
+
+   <script>
+document.addEventListener("DOMContentLoaded", function(){
+  const page = document.getElementById("prewedding-page");
+ 
+  setTimeout(()=> page.classList.add("open"), 200);
+});
+</script>
+<script>
+const backBtn = document.querySelector('.whatsapp-link[href="sd.html"]');
+backBtn.addEventListener('click', function(e){
+  e.preventDefault();
+  const page = document.getElementById("prewedding-page");
+  page.classList.remove("open");
+  page.style.transform = "rotateY(90deg)";
+  page.style.opacity = "0";
+  setTimeout(()=> window.location.href = "sd.html", 800);
+});
+
+

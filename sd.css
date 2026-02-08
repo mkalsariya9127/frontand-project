@@ -1,0 +1,453 @@
+/* --- General Styling --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #0c0c0c;
+  color: #fff;
+  line-height: 1.6;
+}
+h4{
+    top: 50px;
+}
+
+
+
+
+/* --- Header --- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  padding: 15px 40px;
+  box-shadow: 0 2px 10px rgba(255, 215, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: rgb(206, 205, 201);
+}
+
+.search-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-box input {
+  width: 60%;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+}
+
+.search-box button {
+  padding: 8px 14px;
+  border: none;
+  background: rgb(230, 205, 80);
+  color: #000;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-buttons button,
+.whatsapp-btn {
+  background: rgb(103, 130, 53);
+  border: none;
+  color: #000;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.header-buttons button:hover,
+.whatsapp-btn:hover {
+  background: #e6b800;
+}
+
+/* Instagram button */
+.instagram-btn {
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #515bd4);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.instagram-btn:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.whatsapp-btn {
+  background: #25D366;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+}
+
+.instagram-btn {
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #515bd4);
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+}
+.header-buttons {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+}
+
+
+/* --- Gallery --- */
+#gallery {
+  text-align: center;
+  padding: 70px 20px;
+}
+
+#gallery h2 {
+  color: gold;
+  font-size: 5rem;
+  margin-bottom: 50px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 200px;
+  margin-top: 150px; /* yahan se photos aur niche jayengi */
+}
+h1{
+    margin-top: 0px;
+    font-size: 3rem;
+}
+/* ...existing code... */
+h3{
+  
+    color: #f7f6f5;
+    font-size: 2rem; /* Yahan size badha di gayi hai */
+}
+/* ...existing code... */
+span.h4{
+   font-family: 'Courier New', Courier, monospace ;
+}
+.gallery-item {
+  background: #111;
+  padding: 15px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+gallery-item-wrepper {
+  perspective: 1000px;
+  
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.gallery-item img {
+  width: 100%;
+  border-radius: 10px;
+  top: 25px;
+}
+
+.gallery-item h3 {
+  margin: 10px 0 5px;
+  color: gold;
+}
+
+.gallery-item p {
+  margin-bottom: 10px;
+}
+
+.whatsapp-link {
+  background: gold;
+  color: #000;
+  padding: 7px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.whatsapp-link:hover {
+  background: #e6b800;
+}
+
+/* --- Price List --- */
+#prices {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+#prices h2 {
+  color: gold;
+  margin-bottom: 20px;
+}
+
+#prices table {
+  width: 80%;
+  margin: auto;
+  border-collapse: collapse;
+}
+
+#prices th, #prices td {
+  border: 1px solid gold;
+  padding: 10px;
+}
+
+#prices th {
+  background: gold;
+  color: #000;
+}
+
+/* --- Add-ons --- */
+#addons {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+#addons h2 {
+  color: gold;
+  margin-bottom: 15px;
+}
+
+#addons ul {
+  list-style: none;
+}
+
+#addons li {
+  background: #111;
+  margin: 10px auto;
+  padding: 10px;
+  width: 60%;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+/* --- Footer --- */
+footer {
+  text-align: center;
+  background: #012845;
+  padding: 20px;
+  margin-top: 30px;
+  color: #ccc;
+}
+
+/* keep body styles but remove site-wide background image so only sd.html shows the animated bg-slider */
+body {
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+
+/* --- Responsive --- */
+@media(max-width: 768px) {
+  .search-box input {
+    width: 50%;
+  }
+  .bg-slider {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+  }
+
+  .bg-slider img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.6s ease-in-out;
+  }
+
+  .bg-slider img.active {
+    opacity: 1;
+  }
+  /* responsive bg-slider styles kept above; stray properties removed */
+}
+
+/* Offer Image */
+.offer-img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* Heading and Button */
+.offer-content h2 {
+  color: #e91e63;
+  margin-bottom: 10px;
+}
+
+.offer-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #e91e63;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.offer-btn:hover {
+  background: #c2185b;
+}
+
+/* ❌ Close (Cancel) Button */
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #444;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  color: #e91e63;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+
+
+
+
+/* Intro Background */
+#intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  z-index: 9999;
+  animation: fadeOut 1s ease forwards;
+  animation-delay: 3s;
+}
+
+/* Text Animation */
+.intro-text {
+  font-size: 2.5rem;
+  opacity: 0;
+  animation: textFade 2s ease forwards;
+}
+
+.intro-text span {
+  color: #b6a508;
+}
+
+/* Keyframes */
+@keyframes textFade {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+
+/*intrp close*/
+
+
+.sd-page .bg-slider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.sd-page .bg-slider img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.6s ease-in-out;
+}
+
+.sd-page .bg-slider img.active {
+  opacity: 1;
+}
+
+
+.logo-heading {
+ 
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;                    /* heading size */
+  font-weight: 100;                   /* medium bold */
+  color: white;                       /* white text */
+}
+ .logo-heading span {
+  font-family: 'Courier New', Courier, monospace ;
+  font-weight: 100; 
+  font-size: 16;
+
+  letter-spacing: 5px;                /* wide spacing for modern look */
+  text-transform: uppercase;          /* all caps */
+  margin-left: 5px;                  /* thoda gap pehle words se */
+}
+
+
+
+/*welcom heddind animetion*/
+
+
